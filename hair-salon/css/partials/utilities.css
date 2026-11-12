@@ -1,0 +1,41 @@
+.hidden {
+    display: none;
+}
+
+.image-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.75);
+    cursor: zoom-out;
+}
+
+.image-modal-img {
+    max-width: min(95vw, 900px);
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    cursor: default;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+.service-rating {
+    margin: 0.25rem 0 0.5rem;
+    color: var(--primary-color, #333);
+    letter-spacing: 0.05em;
+}
+
+.form-demo-note {
+    margin: 0 0 0.75rem;
+    font-size: 0.95rem;
+    opacity: 0.95;
+}

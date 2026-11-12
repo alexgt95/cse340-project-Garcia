@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--paragraph-font);
+    line-height: 1.6;
+    background-color: var(--white-color);
+    /* ↓ rescatado de site-plan.css — estaba activo en todas las páginas */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5em;        /* cómodo en móviles */
+    font-size: 18px;
+    text-align: center;
+}
+
+/* En pantallas grandes, recupera el espaciado amplio original */
+@media (min-width: 768px) {
+    body {
+        padding: 4em;
+    }
+}
+
+#content {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0px;
+    background-color: var(--accent2-color);
+}
+
+h1, h2, h3 {
+    font-family: var(--heading-font);
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+
+p {
+    margin: 10px 0;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    padding: 1em;   /* rescatado de site-plan.css — espaciado dentro de los campos del formulario, etc. */
+}
+.btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+}
+.btn:hover {
+    color: var(--accent1-color);
+    transform: translateY(-3px);
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+}
+.btn:active {
+    transform: translateY(0px);
+}
+
+.primary-heading {
+    color: var(--black-color);
+}

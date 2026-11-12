@@ -1,0 +1,93 @@
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--accent2-color);
+    position: relative;
+}
+
+.logo {
+    width: 95px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+.logo:hover {
+    transform: scale(1.1);
+}
+
+/* ── Hamburger button (mobile only) ── */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 22px;
+    height: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 200;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 1.8px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Animate three bars → X when menu is open */
+.hamburger.open span:nth-child(1) {
+    transform: translateY(8.5px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-8.5px) rotate(-45deg);
+}
+
+/* ── Nav: hidden on mobile, drops down when .open is toggled ── */
+nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--accent2-color);
+    z-index: 100;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+nav.open {
+    display: flex;
+}
+
+/* ── Nav links (merged: was two `nav a` + two `nav a:hover` rules) ── */
+nav a {
+    padding: 8px 12px;
+    font-size: 0.95rem;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background-color: transparent;
+    text-decoration: underline;
+    color: var(--primary-color);   /* contrast fix: purple, 8.59:1 */
+    transform: scale(1.1);
+}
+
+nav a:focus {
+    outline: 2px solid var(--secondary-color);
+}

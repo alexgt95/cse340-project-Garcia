@@ -1,0 +1,14 @@
+:root {
+    --primary-color: #662D90;
+    --secondary-color: #D4AF37;
+    --accent1-color: #fdfa6b;
+    --accent2-color: #fafafa;
+    --accent3-color: #d0ced2;
+
+    --white-color: #ffffff;
+    --black-color: #000000;
+
+
+    --heading-font: cabin, Arial, sans-serif;
+    --paragraph-font: lato, helvetica, sans-serif;
+}
