@@ -1,0 +1,19 @@
+{
+  "name": "jhovannas-hair-salon",
+  "version": "1.0.0",
+  "description": "Server-rendered hair salon site with bookings, reviews and an admin dashboard (CSE 340 final project)",
+  "private": true,
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "ejs": "^7.0.2",
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
