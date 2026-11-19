@@ -1,46 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Hair Salon: expert haircuts, balayage, and curly hair care">
-    <meta name="author" content="Jorge Gonzales">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Hair Salon | Ashburn, VA">
-    <meta property="og:description" content="Experience personalized haircuts, balayage, and curly hair care at our Hair Salon!">
-    <meta property="og:url" content="https://adwords711-commits.github.io/WDD-231---Group-Project/hair-salon/">
-    <link rel="icon" href="favicon.ico">
-
-    <title><%= title %> | Hair Salon</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <script type="module" src="js/home.js"></script>
-     
-</head>
-<body class="about-me-page">
-    <div id="content">
-        <header>
-            <a id="logo_link" href="/">
-                <picture>
-                    <source srcset="images/jhovannas-hair-salon-logo.webp" type="image/webp">
-                    <img class="logo" src="images/jhovannas-hair-salon-logo.png" alt="Business Logo">
-                </picture>
-            </a>
-            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <nav>
-                <a href="/">Home</a>
-                <a href="services.html">Services</a>
-                <a href="appointment.html">Book</a>
-            </nav>
-        </header>
+<%- include('partials/header') %>
         <div id="hero">
             <div id="hero-box">
                 <picture>
                     <source srcset="images/hair-salon-ashburn-hero-welcome.webp" type="image/webp">
-                    <img id="hero-img" src="images/hair-salon-ashburn-hero-welcome.jpg" alt="Hair salon services display">
+                    <img id="hero-img" src="images/hair-salon-ashburn-hero-welcome.jpg"
+                        alt="Hair salon services display">
                 </picture>
             </div>
             <!--
@@ -53,73 +17,67 @@
         </div>
         <h1 class="primary-heading">Full Service Hair Salon</h1>
         <main class="home-page-grid">
-            
-            
+
+
             <picture style="display: contents;">
                 <source srcset="images/balayage-highlights-long-hair.webp" type="image/webp">
                 <img id="balayageImg" class="modal-trigger" src="images/balayage-highlights-long-hair.jpg"
                     alt="Balayage hair highlights on long hair">
             </picture>
-             
-            
+
+
             <section class="home-page-text-1">
                 <h2>What We Offer</h2>
-                <p>We are passionate about hair, and that passion is reflected in every client we serve. Through ongoing education, our stylists stay updated on the latest trends, 
-				styles, and coloring techniques to deliver the results you’re looking for</p>
+                <p>We are passionate about hair, and that passion is reflected in every client we serve. Through ongoing
+                    education, our stylists stay updated on the latest trends,
+                    styles, and coloring techniques to deliver the results you’re looking for</p>
             </section>
-            
+
             <picture style="display: contents;">
                 <source srcset="images/mens-fade-haircut-style.webp" type="image/webp">
                 <img id="haircutImg" class="modal-trigger" src="images/mens-fade-haircut-style.jpg"
                     alt="Men's haircut style at the salon">
             </picture>
-            
+
             <section class="home-page-text-2">
                 <h2>Welcome</h2>
-                <p>Welcome to OUR HAIR SALON, where your hair is cared for and styled by experienced professionals who are dedicated to helping you look and feel your best. From the moment you walk 
-				through our doors, our goal is to provide a relaxing and welcoming environment where you can enjoy personalized service and attention. We specialize in a variety of services, including precision haircuts, 
-				custom color, balayage, and treatments designed to keep your hair healthy, vibrant, and full of life. Our stylists stay up to date with the latest trends and techniques through continuous education, 
-				ensuring you receive modern, high-quality results every time. Whether you’re looking for a simple refresh or a complete transformation, we take the time to understand your style and bring your vision to 
-				life with care and creativity.</p>
-                
-            </section>   
-            
+                <p>Welcome to OUR HAIR SALON, where your hair is cared for and styled by experienced professionals who
+                    are dedicated to helping you look and feel your best. From the moment you walk
+                    through our doors, our goal is to provide a relaxing and welcoming environment where you can enjoy
+                    personalized service and attention. We specialize in a variety of services, including precision
+                    haircuts,
+                    custom color, balayage, and treatments designed to keep your hair healthy, vibrant, and full of
+                    life. Our stylists stay up to date with the latest trends and techniques through continuous
+                    education,
+                    ensuring you receive modern, high-quality results every time. Whether you’re looking for a simple
+                    refresh or a complete transformation, we take the time to understand your style and bring your
+                    vision to
+                    life with care and creativity.</p>
+
+            </section>
+
             <section class="contact-form-1">
                 <h2 class="primary-heading">CONTACT US</h2>
                 <p class="form-demo-note"><strong>Demo form</strong> — message is not sent.</p>
                 <div id="background"></div>
                 <div id="feedback" aria-live="polite"></div>
                 <form>
-                <p>
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" placeholder="Your name" required>
-                </p>
-                <p>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" placeholder="name@example.com" required>
-                </p>
-                <p>
-                    <label for="msg">Message:</label>
-                    <textarea id="msg" name="message" placeholder="Write your message..." required></textarea>
-                </p>
-                <p class="button-1">
-                <button class="btn" type="submit">Send your message</button>
-                </p>
+                    <p>
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" placeholder="Your name" required>
+                    </p>
+                    <p>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="name@example.com" required>
+                    </p>
+                    <p>
+                        <label for="msg">Message:</label>
+                        <textarea id="msg" name="message" placeholder="Write your message..." required></textarea>
+                    </p>
+                    <p class="button-1">
+                        <button class="btn" type="submit">Send your message</button>
+                    </p>
                 </form>
-            </section>      
-        </main>              
-        <footer>
-        <p>
-            <a href="https://www.jhovanashairsalon.com" title="Salon Website">www.jhovanashairsalon.com</a>          
-        </p>
-        <p>© Hair Salon</p>
-        <div class="social">
-            <!-- Social media icons -->
-            <a href="https://www.jhovanashairsalon.com" rel="noopener noreferrer" aria-label="Visit the salon website (Instagram)"><img src="images/instagram_icon.svg" alt="Instagram Icon"></a>
-            <a href="https://www.jhovanashairsalon.com" rel="noopener noreferrer" aria-label="Visit the salon website (YouTube)"><img src="images/youtube_icon.svg" alt="YouTube Icon"></a>
-            <a href="https://www.jhovanashairsalon.com" rel="noopener noreferrer" aria-label="Visit the salon website (Pinterest)"><img src="images/pinterest_icon.svg" alt="Pinterest Icon"></a>
-        </div>
-    </footer>
-    </div>
-</body>
-</html>
+            </section>
+        </main>
+        <%- include('partials/footer') %>

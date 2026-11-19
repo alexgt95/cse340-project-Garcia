@@ -1,0 +1,12 @@
+<%- include('../partials/header') %>
+        <h1 class="primary-heading"><%= status %> · <%= title %></h1>
+        <main>
+            <section class="contact-form-1">
+                <p><%= message %></p>
+                <p class="button-1"><a class="btn" href="/">Back to Home</a></p>
+                <% if (stack) { %>
+                    <pre style="white-space: pre-wrap;"><%= stack %></pre>
+                <% } %>
+            </section>
+        </main>
+<%- include('../partials/footer') %>
