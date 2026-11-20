@@ -1,4 +1,4 @@
-const SERVICES_URL = "./data/services.json";
+const SERVICES_URL = "/data/services.json";
 
 export async function fetchServices() {
   const response = await fetch(SERVICES_URL);

@@ -1,36 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Book an appointment at our Hair Salon">
-    <meta name="author" content="Jorge Gonzales">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book an Appointment</title>
-    <link rel="icon" href="favicon.ico">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script type="module" src="js/booking.js"></script>
-</head>
-<body class="about-me-page">
-    <div id="content">
-        <header>
-            <a id="logo_link" href="/">
-                <picture>
-                    <source srcset="images/jhovannas-hair-salon-logo.webp" type="image/webp">
-                    <img class="logo" src="images/jhovannas-hair-salon-logo.png" alt="Business Logo">
-                </picture>
-            </a>
-            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <nav>
-                <a href="/">Home</a>
-                <a href="services.html">Services</a>
-                <a href="appointment.html">Book</a>
-            </nav>
-        </header>
+<%- include('partials/header') %>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        <script type="module" src="/js/booking.js"></script>
 
         <h1 class="primary-heading">Book an Appointment</h1>
 
@@ -81,16 +51,4 @@
                 </form>
             </section>
         </main>
-
-        <footer>
-            <p><a href="https://www.jhovanashairsalon.com" title="Salon Website">www.jhovanashairsalon.com</a></p>
-            <p>© Hair Salon</p>
-            <div class="social">
-                <a href="https://www.jhovanashairsalon.com" rel="noopener noreferrer" aria-label="Visit the salon website (Instagram)"><img src="images/instagram_icon.svg" alt="Instagram Icon"></a>
-                <a href="https://www.jhovanashairsalon.com" rel="noopener noreferrer" aria-label="Visit the salon website (YouTube)"><img src="images/youtube_icon.svg" alt="YouTube Icon"></a>
-                <a href="https://www.jhovanashairsalon.com" rel="noopener noreferrer" aria-label="Visit the salon website (Pinterest)"><img src="images/pinterest_icon.svg" alt="Pinterest Icon"></a>
-            </div>
-        </footer>
-    </div>
-</body>
-</html>
+<%- include('partials/footer') %>
