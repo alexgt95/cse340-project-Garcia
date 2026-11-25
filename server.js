@@ -3,6 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import routes from './src/controllers/routes.js';
 import { notFound, errorHandler } from './src/middleware/errors.js';
+import { testConnection } from './src/models/setup.js';
 
 // In ES Modules __dirname does not exist; we rebuild it
 const __filename = fileURLToPath(import.meta.url);
@@ -26,6 +27,9 @@ app.use('/', routes);
 // Error handling always goes last
 app.use(notFound);
 app.use(errorHandler);
+
+// Stop here (with a clear error) if the database is unreachable
+await testConnection();
 
 app.listen(PORT, () => {
     console.log(`Server running on http://127.0.0.1:${PORT} (${NODE_ENV})`);
