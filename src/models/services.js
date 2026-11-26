@@ -1,20 +1,27 @@
-import { readFile } from 'fs/promises';
+import db from './db.js';
 
-// TEMPORARY data source: Phase 6 replaces this JSON file with PostgreSQL queries
-const DATA_FILE = new URL('../../public/data/services.json', import.meta.url);
-
-const readServices = async () => JSON.parse(await readFile(DATA_FILE, 'utf8'));
-
-// All services, or only those in one category
-const getAllServices = async (category) => {
-    const services = await readServices();
-    return category ? services.filter((s) => s.category.includes(category)) : services;
+// Active services with their category and a { short, mid, long } price object.
+// categorySlug is optional: without it, every category is included.
+const getAllServices = async (categorySlug) => {
+    const sql = `
+        SELECT s.id, s.name, s.slug, s.description, s.duration_minutes, s.image_url,
+               c.name AS category_name, c.slug AS category_slug,
+               json_object_agg(p.hair_length, p.price) AS prices
+        FROM services s
+        JOIN categories c ON c.id = s.category_id
+        JOIN service_prices p ON p.service_id = s.id
+        WHERE s.is_active
+          AND ($1::text IS NULL OR c.slug = $1)
+        GROUP BY s.id, c.id
+        ORDER BY c.name, s.name`;
+    const result = await db.query(sql, [categorySlug ?? null]);
+    return result.rows;
 };
 
-// Unique category names, sorted A-Z
+// Every category, A-Z
 const getCategories = async () => {
-    const services = await readServices();
-    return [...new Set(services.flatMap((s) => s.category))].sort();
+    const result = await db.query('SELECT name, slug FROM categories ORDER BY name');
+    return result.rows;
 };
 
 export { getAllServices, getCategories };
