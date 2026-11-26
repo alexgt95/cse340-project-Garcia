@@ -252,3 +252,20 @@
     border-bottom: 1px solid var(--accent3-color);
     text-align: left;
 }
+
+/* Contact form: server-side validation messages */
+.field-error {
+    display: block;
+    margin-top: 4px;
+    color: #8b0000;
+    font-weight: bold;
+}
+
+.form-success {
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #ffffff;
+    color: var(--primary-color);
+    border-radius: 5px;
+    text-align: center;
+}

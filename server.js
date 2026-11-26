@@ -21,6 +21,9 @@ app.set('views', path.join(__dirname, 'src', 'views'));
 // CSS, images and browser JS are served as-is from public/
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Reads HTML form submissions into req.body
+app.use(express.urlencoded({ extended: true }));
+
 // Every page route lives in src/controllers/routes.js
 app.use('/', routes);
 

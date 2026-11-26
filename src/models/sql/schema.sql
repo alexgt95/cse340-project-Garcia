@@ -28,3 +28,17 @@ CREATE TABLE IF NOT EXISTS service_prices (
     price       NUMERIC(7, 2) NOT NULL CHECK (price >= 0),
     PRIMARY KEY (service_id, hair_length)
 );
+
+
+-- ── Contact messages ───────────────────────────────────────────
+-- status moves through a small workflow: received → replied → closed
+
+CREATE TABLE IF NOT EXISTS contact_messages (
+    id         SERIAL PRIMARY KEY,
+    name       VARCHAR(100) NOT NULL,
+    email      VARCHAR(255) NOT NULL,
+    message    TEXT NOT NULL,
+    status     VARCHAR(20) NOT NULL DEFAULT 'received'
+               CHECK (status IN ('received', 'replied', 'closed')),
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);

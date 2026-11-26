@@ -74,19 +74,3 @@ function initImageModal() {
 }
 
 initImageModal();
-
-// Contact Form (demo only — no backend)
-const feedbackElement = document.getElementById("feedback");
-const formElement = document.querySelector(".contact-form-1 form");
-
-if (formElement && feedbackElement) {
-  formElement.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    feedbackElement.textContent =
-      "Thank you! This is a demo form — your message was not sent.";
-    feedbackElement.style.display = "block";
-
-    formElement.reset();
-  });
-}
