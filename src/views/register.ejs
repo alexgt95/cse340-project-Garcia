@@ -1,0 +1,43 @@
+<%- include('partials/header') %>
+        <h1 class="primary-heading">Create an Account</h1>
+
+        <main>
+            <section class="contact-form-1">
+                <h2 class="primary-heading">Join Jhovanna's Hair Salon</h2>
+                <% if (created) { %>
+                    <p class="form-success" role="status">Your account was created! You'll be able to log in soon.</p>
+                <% } %>
+                <form action="/register" method="post">
+                    <p>
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" autocomplete="name" required maxlength="100"
+                               value="<%= values.name ?? '' %>" <%= errors.name ? 'aria-invalid=true aria-describedby=name-error' : '' %>>
+                        <% if (errors.name) { %><span class="field-error" id="name-error"><%= errors.name.msg %></span><% } %>
+                    </p>
+                    <p>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" autocomplete="email" required maxlength="255"
+                               value="<%= values.email ?? '' %>" <%= errors.email ? 'aria-invalid=true aria-describedby=email-error' : '' %>>
+                        <% if (errors.email) { %><span class="field-error" id="email-error"><%= errors.email.msg %></span><% } %>
+                    </p>
+                    <p>
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" autocomplete="new-password" required
+                               minlength="8" maxlength="72" aria-describedby="password-hint<%= errors.password ? ' password-error' : '' %>"
+                               <%= errors.password ? 'aria-invalid=true' : '' %>>
+                        <small id="password-hint">At least 8 characters, with an uppercase letter, a lowercase letter, a number and a symbol.</small>
+                        <% if (errors.password) { %><span class="field-error" id="password-error"><%= errors.password.msg %></span><% } %>
+                    </p>
+                    <p>
+                        <label for="passwordConfirm">Confirm password:</label>
+                        <input type="password" id="passwordConfirm" name="passwordConfirm" autocomplete="new-password" required
+                               <%= errors.passwordConfirm ? 'aria-invalid=true aria-describedby=passwordConfirm-error' : '' %>>
+                        <% if (errors.passwordConfirm) { %><span class="field-error" id="passwordConfirm-error"><%= errors.passwordConfirm.msg %></span><% } %>
+                    </p>
+                    <p class="button-1">
+                        <button class="btn" type="submit">Create account</button>
+                    </p>
+                </form>
+            </section>
+        </main>
+<%- include('partials/footer') %>

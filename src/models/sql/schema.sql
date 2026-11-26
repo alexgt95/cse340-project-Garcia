@@ -42,3 +42,24 @@ CREATE TABLE IF NOT EXISTS contact_messages (
                CHECK (status IN ('received', 'replied', 'closed')),
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+
+-- ── Roles and users ────────────────────────────────────────────
+-- The three roles always exist; ON CONFLICT skips the ones already saved
+
+CREATE TABLE IF NOT EXISTS roles (
+    id   SERIAL PRIMARY KEY,
+    name VARCHAR(20) UNIQUE NOT NULL
+);
+
+INSERT INTO roles (name) VALUES ('admin'), ('stylist'), ('client')
+ON CONFLICT (name) DO NOTHING;
+
+CREATE TABLE IF NOT EXISTS users (
+    id            SERIAL PRIMARY KEY,
+    role_id       INTEGER NOT NULL REFERENCES roles(id) ON DELETE RESTRICT,
+    name          VARCHAR(100) NOT NULL,
+    email         VARCHAR(255) UNIQUE NOT NULL,
+    password_hash CHAR(60) NOT NULL,   -- bcrypt hashes are always 60 characters
+    created_at    TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at    TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);

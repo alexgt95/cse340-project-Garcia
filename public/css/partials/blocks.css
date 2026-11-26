@@ -269,3 +269,10 @@
     border-radius: 5px;
     text-align: center;
 }
+
+.contact-form-1 label,
+.contact-form-1 input,
+.contact-form-1 textarea,
+.contact-form-1 small {
+    color: var(--black-color);
+}
