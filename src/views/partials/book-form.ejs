@@ -1,0 +1,12 @@
+<!-- Native GET form: sends ?service=...&length=... to the booking page, no JS needed -->
+<form action="/book" method="get">
+    <input type="hidden" name="service" value="<%= service.name %>">
+    <label for="length-<%= service.slug %>">Select hair length:</label>
+    <select class="hair-length" id="length-<%= service.slug %>" name="length" required>
+        <option value="">--Choose--</option>
+        <option value="short">Short Hair</option>
+        <option value="mid">Mid Length</option>
+        <option value="long">Long Hair</option>
+    </select>
+    <button class="select-service-btn btn" type="submit">Book this service</button>
+</form>

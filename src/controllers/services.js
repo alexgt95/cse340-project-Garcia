@@ -1,4 +1,4 @@
-import { getAllServices, getCategories } from '../models/services.js';
+import { getAllServices, getServiceBySlug, getCategories } from '../models/services.js';
 
 // GET /services  and  /services?category=color
 const showServices = async (req, res) => {
@@ -16,4 +16,18 @@ const showServices = async (req, res) => {
     });
 };
 
-export { showServices };
+// GET /services/:slug  (e.g. /services/balayage)
+const showServiceDetail = async (req, res, next) => {
+    const service = await getServiceBySlug(req.params.slug);
+
+    // No service with that slug: hand a 404 to the global error handler
+    if (!service) {
+        const err = new Error('Service Not Found');
+        err.status = 404;
+        return next(err);
+    }
+
+    res.render('service-detail', { title: service.name, service });
+};
+
+export { showServices, showServiceDetail };

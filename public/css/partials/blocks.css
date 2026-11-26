@@ -219,3 +219,36 @@
 .contact-form-1 textarea {
     color: var(--black-color);
 }
+
+/* Service detail: title links, back link and price table */
+.service-info h2 a,
+.service-category a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.service-info h2 a:hover,
+.service-category a:hover {
+    text-decoration: underline;
+}
+
+.back-link {
+    margin: 16px 5%;
+}
+
+.price-table {
+    margin: 12px auto;
+    border-collapse: collapse;
+}
+
+.price-table caption {
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.price-table th,
+.price-table td {
+    padding: 6px 16px;
+    border-bottom: 1px solid var(--accent3-color);
+    text-align: left;
+}

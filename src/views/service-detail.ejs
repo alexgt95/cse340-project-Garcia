@@ -1,0 +1,31 @@
+<%- include('partials/header') %>
+        <p class="back-link"><a href="/services">← All services</a></p>
+        <h1 class="primary-heading"><%= service.name %></h1>
+
+        <main>
+            <section class="service-card">
+                <div class="service-image">
+                    <picture style="display: contents;">
+                        <source srcset="<%= service.image_url.replace(/\.jpg$/, '.webp') %>" type="image/webp">
+                        <img src="<%= service.image_url %>" alt="<%= service.name %>">
+                    </picture>
+                </div>
+                <div class="service-info">
+                    <div class="service-category">
+                        <a href="/services?category=<%= service.category_slug %>"><%= service.category_name %></a>
+                    </div>
+                    <p class="service-description"><%= service.description %></p>
+                    <p class="service-duration"><strong>Duration:</strong> <%= service.duration_minutes %> min</p>
+
+                    <table class="price-table">
+                        <caption>Price by hair length</caption>
+                        <tr><th scope="row">Short</th><td>$<%= service.prices.short %></td></tr>
+                        <tr><th scope="row">Mid length</th><td>$<%= service.prices.mid %></td></tr>
+                        <tr><th scope="row">Long</th><td>$<%= service.prices.long %></td></tr>
+                    </table>
+
+                    <%- include('partials/book-form', { service }) %>
+                </div>
+            </section>
+        </main>
+<%- include('partials/footer') %>
