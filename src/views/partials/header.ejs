@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Jhovanna's Hair Salon in Ashburn, VA: expert haircuts, balayage, and curly hair care">
-    <title><%= title %> | Hair Salon</title>
+    <meta name="description"
+        content="Jhovanna's Hair Salon in Ashburn, VA: expert haircuts, balayage, and curly hair care">
+    <title>
+        <%= title %> | Hair Salon
+    </title>
     <link rel="icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/styles.css">
     <script type="module" src="/js/script.js"></script>
 </head>
+
 <body>
     <div id="content">
         <header>
@@ -28,6 +33,16 @@
                 <a href="/services">Services</a>
                 <a href="/book">Book</a>
                 <a href="/contact">Contact</a>
-                <a href="/register">Register</a>
+                <% if (locals.currentUser) { %>
+                    <a href="/logout">Log out</a>
+                    <% } else { %>
+                        <a href="/login">Log in</a>
+                        <a href="/register">Register</a>
+                        <% } %>
             </nav>
         </header>
+        <% (locals.flash ?? []).forEach(({ type, message })=> { %>
+            <p class="flash flash-<%= type %>" role="status">
+                <%= message %>
+            </p>
+            <% }) %>

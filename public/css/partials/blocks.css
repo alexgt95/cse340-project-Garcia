@@ -276,3 +276,21 @@
 .contact-form-1 small {
     color: var(--black-color);
 }
+
+/* Flash messages (shown under the header, once) */
+.flash {
+    width: 90%;
+    margin: 16px auto 0;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    background-color: #ffffff;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.flash-error {
+    color: #8b0000;
+    border-color: #8b0000;
+}

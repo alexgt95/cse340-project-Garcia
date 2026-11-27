@@ -1,13 +1,12 @@
 import { validationResult, matchedData } from 'express-validator';
 import { createContactMessage } from '../models/contact.js';
 
-// GET /contact   (?sent=1 after a successful submission)
+// GET /contact
 const showContact = (req, res) => {
     res.render('contact', {
         title: 'Contact Us',
         errors: {},
-        values: {},
-        sent: req.query.sent === '1'
+        values: {}
     });
 };
 
@@ -20,8 +19,7 @@ const processContact = async (req, res) => {
         return res.status(400).render('contact', {
             title: 'Contact Us',
             errors: result.mapped(),
-            values: req.body,
-            sent: false
+            values: req.body
         });
     }
 
@@ -30,7 +28,8 @@ const processContact = async (req, res) => {
     await createContactMessage(name, email, message);
 
     // Post/Redirect/Get: refreshing the next page won't send the message twice
-    res.redirect('/contact?sent=1');
+    req.flash('success', 'Thank you! We received your message and will reply soon.');
+    res.redirect('/contact');
 };
 
 export { showContact, processContact };

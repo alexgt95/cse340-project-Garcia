@@ -18,4 +18,16 @@ const createUser = async (name, email, passwordHash) => {
     return result.rows[0].id;
 };
 
-export { emailExists, createUser };
+// Finds an account by email for the login. Includes the hash (to compare passwords)
+// and the role name. Returns undefined when no account uses that email.
+const findUserByEmail = async (email) => {
+    const sql = `
+        SELECT u.id, u.name, u.email, u.password_hash, r.name AS role
+        FROM users u
+        JOIN roles r ON r.id = u.role_id
+        WHERE u.email = $1`;
+    const result = await db.query(sql, [email]);
+    return result.rows[0];
+};
+
+export { emailExists, createUser, findUserByEmail };

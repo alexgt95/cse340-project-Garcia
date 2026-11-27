@@ -46,4 +46,14 @@ const registerRules = [
         .withMessage('Passwords do not match.')
 ];
 
-export { contactRules, registerRules };
+// Rules for the login form. No password strength check here: just "is it there?"
+const loginRules = [
+    body('email')
+        .trim()
+        .toLowerCase()
+        .isEmail().withMessage('Please enter a valid email address.'),
+    body('password')
+        .notEmpty().withMessage('Please enter your password.')
+];
+
+export { contactRules, registerRules, loginRules };
