@@ -3,7 +3,9 @@ import { showHome } from './home.js';
 import { showServices, showServiceDetail } from './services.js';
 import { showBooking } from './appointments.js';
 import { showContact, processContact } from './contact.js';
-import { showRegister, processRegister, showLogin, processLogin, processLogout } from './accounts.js';
+import { showRegister, processRegister, showLogin, processLogin, processLogout, showAccount } from './accounts.js';
+import { showDashboard } from './admin.js';
+import { requireLogin, requireRole } from '../middleware/auth.js';
 import { contactRules, registerRules, loginRules } from '../middleware/validation/forms.js';
 
 const router = Router();
@@ -24,5 +26,9 @@ router.post('/register', registerRules, processRegister);
 router.get('/login', showLogin);
 router.post('/login', loginRules, processLogin);
 router.get('/logout', processLogout);
+router.get('/account', requireLogin, showAccount);
+
+// Admin only
+router.get('/admin', requireRole('admin'), showDashboard);
 
 export default router;

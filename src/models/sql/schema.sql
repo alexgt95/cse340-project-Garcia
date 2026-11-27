@@ -63,3 +63,18 @@ CREATE TABLE IF NOT EXISTS users (
     created_at    TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at    TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+
+-- ── Test accounts ──────────────────────────────────────────────
+-- One account per role so graders can try every part of the site.
+-- password_hash is the bcrypt hash of the course's shared test password.
+-- ON CONFLICT keeps accounts that already exist (and any changes made to them).
+
+INSERT INTO users (name, email, password_hash, role_id)
+SELECT v.name, v.email, '$2b$10$un71q3NJbabF1Dr3pLh7j.hdzBz/mDONV81zP7tyBo3HVCOfNfucu', r.id
+FROM (VALUES
+    ('Salon Admin',    'admin@example.com',   'admin'),
+    ('Sample Stylist', 'stylist@example.com', 'stylist'),
+    ('Test Client',    'client@example.com',  'client')
+) AS v(name, email, role)
+JOIN roles r ON r.name = v.role
+ON CONFLICT (email) DO NOTHING;

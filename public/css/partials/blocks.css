@@ -213,13 +213,6 @@
     transition: opacity 0.3s ease;
 }
 
-/* Contact form: keep field text readable (black, not white) */
-.contact-form-1 label,
-.contact-form-1 input,
-.contact-form-1 textarea {
-    color: var(--black-color);
-}
-
 /* Service detail: title links, back link and price table */
 .service-info h2 a,
 .service-category a {
@@ -261,22 +254,6 @@
     font-weight: bold;
 }
 
-.form-success {
-    padding: 10px;
-    margin: 10px 0;
-    background-color: #ffffff;
-    color: var(--primary-color);
-    border-radius: 5px;
-    text-align: center;
-}
-
-.contact-form-1 label,
-.contact-form-1 input,
-.contact-form-1 textarea,
-.contact-form-1 small {
-    color: var(--black-color);
-}
-
 /* Flash messages (shown under the header, once) */
 .flash {
     width: 90%;
@@ -293,4 +270,40 @@
 .flash-error {
     color: #8b0000;
     border-color: #8b0000;
+}
+
+
+/* Account page */
+.account-details {
+    color: var(--black-color);
+}
+
+.account-details dt {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Admin dashboard */
+.admin-section {
+    width: 90%;
+    margin: 40px auto;
+    overflow-x: auto;   /* wide tables scroll sideways on phones */
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table caption {
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--accent3-color);
+    text-align: left;
 }

@@ -30,4 +30,15 @@ const findUserByEmail = async (email) => {
     return result.rows[0];
 };
 
-export { emailExists, createUser, findUserByEmail };
+// Every account with its role name, for the admin dashboard. Never selects the hash.
+const getAllUsers = async () => {
+    const sql = `
+        SELECT u.id, u.name, u.email, r.name AS role, u.created_at
+        FROM users u
+        JOIN roles r ON r.id = u.role_id
+        ORDER BY r.id, u.name`;
+    const result = await db.query(sql);
+    return result.rows;
+};
+
+export { emailExists, createUser, findUserByEmail, getAllUsers };

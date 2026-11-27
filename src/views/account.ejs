@@ -1,0 +1,15 @@
+<%- include('partials/header') %>
+        <h1 class="primary-heading">My Account</h1>
+
+        <main>
+            <section class="contact-form-1">
+                <h2 class="primary-heading">Hello, <%= currentUser.name %></h2>
+                <dl class="account-details">
+                    <dt>Email</dt>
+                    <dd><%= currentUser.email %></dd>
+                    <dt>Role</dt>
+                    <dd><%= currentUser.role %></dd>
+                </dl>
+            </section>
+        </main>
+<%- include('partials/footer') %>

@@ -1,0 +1,30 @@
+<%- include('../partials/header') %>
+        <h1 class="primary-heading">Admin Dashboard</h1>
+
+        <main>
+            <section class="admin-section">
+                <h2 class="primary-heading">Users</h2>
+                <table class="admin-table">
+                    <caption>All accounts (<%= users.length %>)</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Role</th>
+                            <th scope="col">Joined</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% users.forEach(user => { %>
+                            <tr>
+                                <td><%= user.name %></td>
+                                <td><%= user.email %></td>
+                                <td><%= user.role %></td>
+                                <td><%= user.created_at.toLocaleDateString('en-US') %></td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+<%- include('../partials/footer') %>

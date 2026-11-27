@@ -60,7 +60,7 @@ const processLogin = async (req, res, next) => {
         // Save only what the pages need. Never the password hash.
         req.session.user = { id: user.id, name: user.name, email: user.email, role: user.role };
         req.flash('success', `Welcome back, ${user.name}!`);
-        res.redirect('/');
+        res.redirect('/account');
     });
 };
 
@@ -73,4 +73,9 @@ const processLogout = (req, res, next) => {
     });
 };
 
-export { showRegister, processRegister, showLogin, processLogin, processLogout };
+ // GET /account   (requireLogin runs first, so currentUser always exists here)
+const showAccount = (req, res) => {
+    res.render('account', { title: 'My Account' });
+};
+
+export { showRegister, processRegister, showLogin, processLogin, processLogout, showAccount };
