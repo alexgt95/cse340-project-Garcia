@@ -1,0 +1,48 @@
+<%- include('../partials/header') %>
+        <h1 class="primary-heading">Manage Services</h1>
+
+        <main>
+            <nav class="admin-links" aria-label="Admin sections">
+                <a href="/admin">Dashboard</a>
+                <a href="/admin/categories">Manage categories</a>
+                <a href="/admin/services/new">+ Add a service</a>
+            </nav>
+            <section class="admin-section">
+                <table class="admin-table">
+                    <caption>All services (<%= services.length %>)</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Minutes</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% services.forEach(service => { %>
+                            <tr>
+                                <td>
+                                    <% if (service.is_active) { %>
+                                        <a href="/services/<%= service.slug %>"><%= service.name %></a>
+                                    <% } else { %>
+                                        <%= service.name %>
+                                    <% } %>
+                                </td>
+                                <td><%= service.category_name %></td>
+                                <td><%= service.duration_minutes %></td>
+                                <td><%= service.is_active ? 'Active' : 'Hidden' %></td>
+                                <td class="admin-actions">
+                                    <a href="/admin/services/<%= service.id %>/edit">Edit</a>
+                                    <form action="/admin/services/<%= service.id %>/delete" method="post"
+                                          onsubmit="return confirm('Delete this service for good?')">
+                                        <button type="submit">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+<%- include('../partials/footer') %>

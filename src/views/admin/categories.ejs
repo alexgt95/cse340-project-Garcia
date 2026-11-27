@@ -1,0 +1,49 @@
+<%- include('../partials/header') %>
+        <h1 class="primary-heading">Manage Categories</h1>
+
+        <main>
+            <nav class="admin-links" aria-label="Admin sections">
+                <a href="/admin">Dashboard</a>
+                <a href="/admin/services">Manage services</a>
+            </nav>
+            <section class="admin-section">
+                <form class="inline-form" action="/admin/categories" method="post">
+                    <label for="new-category">New category:</label>
+                    <input type="text" id="new-category" name="name" required maxlength="50">
+                    <button type="submit">Add</button>
+                </form>
+
+                <table class="admin-table">
+                    <caption>All categories (<%= categories.length %>)</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Services</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% categories.forEach(category => { %>
+                            <tr>
+                                <td>
+                                    <form class="inline-form" action="/admin/categories/<%= category.id %>" method="post">
+                                        <label class="visually-hidden" for="category-<%= category.id %>">Name of <%= category.name %></label>
+                                        <input type="text" id="category-<%= category.id %>" name="name" required maxlength="50"
+                                               value="<%= category.name %>">
+                                        <button type="submit">Rename</button>
+                                    </form>
+                                </td>
+                                <td><%= category.service_count %></td>
+                                <td>
+                                    <form action="/admin/categories/<%= category.id %>/delete" method="post"
+                                          onsubmit="return confirm('Delete this category?')">
+                                        <button type="submit" <%= category.service_count > 0 ? 'disabled' : '' %>>Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+<%- include('../partials/footer') %>

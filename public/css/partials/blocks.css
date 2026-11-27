@@ -307,3 +307,91 @@
     border-bottom: 1px solid var(--accent3-color);
     text-align: left;
 }
+
+
+/* Form text stays readable (black) on the card's light gray */
+.contact-form-1 label,
+.contact-form-1 input,
+.contact-form-1 textarea,
+.contact-form-1 small,
+.contact-form-1 select,
+.contact-form-1 legend {
+    color: var(--black-color);
+}
+
+/* Admin: links between sections, forms and buttons */
+.admin-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    margin: 20px 5% 0;
+}
+
+.admin-links a,
+.admin-actions a {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.admin-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.admin-table button,
+.inline-form button {
+    padding: 4px 10px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.admin-table button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.inline-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.inline-form input {
+    padding: 4px 8px;
+}
+
+/* Service form: selects and the prices group look like the other fields */
+.contact-form-1 select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+.contact-form-1 fieldset {
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    padding: 0 12px;
+}
+
+.contact-form-1 input[type="checkbox"] {
+    width: auto;
+}
+
+/* Hidden on screen, still read by screen readers */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}

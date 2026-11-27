@@ -1,0 +1,71 @@
+<%- include('../partials/header') %>
+        <h1 class="primary-heading"><%= title %></h1>
+
+        <main>
+            <p class="back-link"><a href="/admin/services">← Back to services</a></p>
+            <section class="contact-form-1">
+                <form action="<%= action %>" method="post">
+                    <p>
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required maxlength="100"
+                               value="<%= values.name ?? '' %>" <%= errors.name ? 'aria-invalid=true aria-describedby=name-error' : '' %>>
+                        <% if (errors.name) { %><span class="field-error" id="name-error"><%= errors.name.msg %></span><% } %>
+                    </p>
+                    <p>
+                        <label for="category_id">Category:</label>
+                        <select id="category_id" name="category_id" required
+                                <%= errors.category_id ? 'aria-invalid=true aria-describedby=category-error' : '' %>>
+                            <option value="">Choose a category</option>
+                            <% categories.forEach(category => { %>
+                                <option value="<%= category.id %>" <%= Number(values.category_id) === category.id ? 'selected' : '' %>><%= category.name %></option>
+                            <% }) %>
+                        </select>
+                        <% if (errors.category_id) { %><span class="field-error" id="category-error"><%= errors.category_id.msg %></span><% } %>
+                    </p>
+                    <p>
+                        <label for="description">Description:</label>
+                        <textarea id="description" name="description" required minlength="10" maxlength="2000"
+                                  <%= errors.description ? 'aria-invalid=true aria-describedby=description-error' : '' %>><%= values.description ?? '' %></textarea>
+                        <% if (errors.description) { %><span class="field-error" id="description-error"><%= errors.description.msg %></span><% } %>
+                    </p>
+                    <p>
+                        <label for="duration_minutes">Duration (minutes):</label>
+                        <input type="number" id="duration_minutes" name="duration_minutes" required min="5" max="600" step="5"
+                               value="<%= values.duration_minutes ?? '' %>" <%= errors.duration_minutes ? 'aria-invalid=true aria-describedby=duration-error' : '' %>>
+                        <% if (errors.duration_minutes) { %><span class="field-error" id="duration-error"><%= errors.duration_minutes.msg %></span><% } %>
+                    </p>
+                    <p>
+                        <label for="image_url">Photo:</label>
+                        <select id="image_url" name="image_url" required
+                                <%= errors.image_url ? 'aria-invalid=true aria-describedby=image-error' : '' %>>
+                            <option value="">Choose a photo</option>
+                            <% images.forEach(image => { %>
+                                <option value="<%= image %>" <%= values.image_url === image ? 'selected' : '' %>><%= image.replace('/images/', '') %></option>
+                            <% }) %>
+                        </select>
+                        <% if (errors.image_url) { %><span class="field-error" id="image-error"><%= errors.image_url.msg %></span><% } %>
+                    </p>
+                    <fieldset>
+                        <legend>Prices (USD) by hair length</legend>
+                        <% [['price_short', 'Short'], ['price_mid', 'Mid'], ['price_long', 'Long']].forEach(([field, label]) => { %>
+                            <p>
+                                <label for="<%= field %>"><%= label %>:</label>
+                                <input type="number" id="<%= field %>" name="<%= field %>" required min="0" max="99999.99" step="0.01"
+                                       value="<%= values[field] ?? '' %>" <%= errors[field] ? `aria-invalid=true aria-describedby=${field}-error` : '' %>>
+                                <% if (errors[field]) { %><span class="field-error" id="<%= field %>-error"><%= errors[field].msg %></span><% } %>
+                            </p>
+                        <% }) %>
+                    </fieldset>
+                    <p>
+                        <label>
+                            <input type="checkbox" name="is_active" <%= values.is_active ? 'checked' : '' %>>
+                            Show this service on the public site
+                        </label>
+                    </p>
+                    <p class="button-1">
+                        <button class="btn" type="submit">Save service</button>
+                    </p>
+                </form>
+            </section>
+        </main>
+<%- include('../partials/footer') %>
